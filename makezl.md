@@ -1,1 +1,1 @@
-cmake -DCMAKE_PREFIX_PATH=/root/workfolder/basic/Log ..
+cmake -DCMAKE_PREFIX_PATH=/root/workfolder/basic/external/Log ..

@@ -9,7 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/root/workfolder/basic/controller/LoginController.cpp" "CMakeFiles/login_system.dir/controller/LoginController.cpp.o" "gcc" "CMakeFiles/login_system.dir/controller/LoginController.cpp.o.d"
+  "/root/workfolder/basic/controller/queryController.cpp" "CMakeFiles/login_system.dir/controller/queryController.cpp.o" "gcc" "CMakeFiles/login_system.dir/controller/queryController.cpp.o.d"
   "/root/workfolder/basic/main.cpp" "CMakeFiles/login_system.dir/main.cpp.o" "gcc" "CMakeFiles/login_system.dir/main.cpp.o.d"
+  "/root/workfolder/basic/query/FaissQuery.cpp" "CMakeFiles/login_system.dir/query/FaissQuery.cpp.o" "gcc" "CMakeFiles/login_system.dir/query/FaissQuery.cpp.o.d"
   "/root/workfolder/basic/sql/sqlconnpool.cpp" "CMakeFiles/login_system.dir/sql/sqlconnpool.cpp.o" "gcc" "CMakeFiles/login_system.dir/sql/sqlconnpool.cpp.o.d"
   "/root/workfolder/basic/usersControl/UsersManage.cpp" "CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o" "gcc" "CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o.d"
   )

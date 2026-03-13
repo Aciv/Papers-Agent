@@ -21,7 +21,7 @@ public:
     METHOD_LIST_END
 
 
-    WEB_ESSAY_LIBRARY::UserDataController userDataController;
+
 
     
     // 处理注册请求
@@ -35,7 +35,9 @@ public:
     // 处理获取用户信息请求
     void getUser(const drogon::HttpRequestPtr& req,
                       std::function<void(const drogon::HttpResponsePtr&)>&& callback);
-    
+
+private:
+    WEB_ESSAY_LIBRARY::UserDataController userDataController;
     // 创建JSON响应
     drogon::HttpResponsePtr createJsonResponse(const Json::Value& json, drogon::HttpStatusCode code = drogon::k200OK);
     

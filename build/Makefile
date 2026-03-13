@@ -153,6 +153,30 @@ controller/LoginController.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/LoginController.cpp.s
 .PHONY : controller/LoginController.cpp.s
 
+controller/queryController.o: controller/queryController.cpp.o
+.PHONY : controller/queryController.o
+
+# target to build an object file
+controller/queryController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/queryController.cpp.o
+.PHONY : controller/queryController.cpp.o
+
+controller/queryController.i: controller/queryController.cpp.i
+.PHONY : controller/queryController.i
+
+# target to preprocess a source file
+controller/queryController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/queryController.cpp.i
+.PHONY : controller/queryController.cpp.i
+
+controller/queryController.s: controller/queryController.cpp.s
+.PHONY : controller/queryController.s
+
+# target to generate assembly for a file
+controller/queryController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/queryController.cpp.s
+.PHONY : controller/queryController.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -176,6 +200,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+query/FaissQuery.o: query/FaissQuery.cpp.o
+.PHONY : query/FaissQuery.o
+
+# target to build an object file
+query/FaissQuery.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/query/FaissQuery.cpp.o
+.PHONY : query/FaissQuery.cpp.o
+
+query/FaissQuery.i: query/FaissQuery.cpp.i
+.PHONY : query/FaissQuery.i
+
+# target to preprocess a source file
+query/FaissQuery.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/query/FaissQuery.cpp.i
+.PHONY : query/FaissQuery.cpp.i
+
+query/FaissQuery.s: query/FaissQuery.cpp.s
+.PHONY : query/FaissQuery.s
+
+# target to generate assembly for a file
+query/FaissQuery.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/query/FaissQuery.cpp.s
+.PHONY : query/FaissQuery.cpp.s
 
 sql/sqlconnpool.o: sql/sqlconnpool.cpp.o
 .PHONY : sql/sqlconnpool.o
@@ -237,9 +285,15 @@ help:
 	@echo "... controller/LoginController.o"
 	@echo "... controller/LoginController.i"
 	@echo "... controller/LoginController.s"
+	@echo "... controller/queryController.o"
+	@echo "... controller/queryController.i"
+	@echo "... controller/queryController.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... query/FaissQuery.o"
+	@echo "... query/FaissQuery.i"
+	@echo "... query/FaissQuery.s"
 	@echo "... sql/sqlconnpool.o"
 	@echo "... sql/sqlconnpool.i"
 	@echo "... sql/sqlconnpool.s"

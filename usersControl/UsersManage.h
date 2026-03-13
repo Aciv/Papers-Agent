@@ -1,7 +1,7 @@
 #pragma once
 
 #include "User.h"
-#include "../sql/sqlconnpool.h"
+#include "../sql/sql_wrapper.h"
 #include <mysql/mysql.h>
 #include <string>
 #include <memory>
@@ -33,15 +33,11 @@ public:
     bool dataExists(const std::string& column, const std::string value);
     
 private:
-    cSqlConnPool* conn_pool = cSqlConnPool::Instance();
+    WEB_ESSAY_LIBRARY::SqlWrapper sql_wrapper;
 
     bool checkName(const std::string& username);
     bool checkEmail(const std::string& email);
 
-    bool executeQuery(const std::string& sql);
-    // with result
-    MYSQL_RES* executeQueryWithResult(const std::string& sql);
-    
     // 从结果集中提取用户信息
     std::shared_ptr<User> extractUserFromResult(MYSQL_RES* result);
 };

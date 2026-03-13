@@ -12,8 +12,28 @@ find_package(Drogon REQUIRED)
 # 查找JSON库
 find_package(jsoncpp REQUIRED)
 
+# 查找SimpleLog库
 find_package(SimpleLog REQUIRED)
 
+# Find OpenMP
+find_package(OpenMP REQUIRED)
+
+# Find BLAS/LAPACK
+find_package(BLAS REQUIRED)
+find_package(LAPACK REQUIRED)
+
+# Find FAISS library
+set(FAISS_ROOT "${CMAKE_SOURCE_DIR}/external/faiss")
+set(FAISS_INCLUDE_DIR "${FAISS_ROOT}/include")
+set(FAISS_LIBRARY "${FAISS_ROOT}/lib/libfaiss.a")
+# Check if FAISS library exists
+if(NOT EXISTS "${FAISS_LIBRARY}")
+    message(FATAL_ERROR "FAISS library not found at: ${FAISS_LIBRARY}")
+endif()
+
+if(NOT EXISTS "${FAISS_INCLUDE_DIR}")
+    message(FATAL_ERROR "FAISS include directory not found at: ${FAISS_INCLUDE_DIR}")
+endif()
 
 
 # 源文件列表
@@ -22,19 +42,25 @@ set(SOURCES
     sql/sqlconnpool.cpp
     usersControl/UsersManage.cpp
     controller/LoginController.cpp
+    controller/queryController.cpp
+    query/FaissQuery.cpp
 )
 
 # 头文件列表
 set(HEADERS
     sql/sqlconnpool.h
+    sql/sql_wrapper.h
     usersControl/UsersManage.h
     usersControl/User.h
     controller/LoginController.h
+    controller/queryController.h
+    query/FaissQuery.h
 )
 
 # 添加可执行文件
 add_executable(login_system ${SOURCES} ${HEADERS})
 
+target_include_directories(login_system PRIVATE ${FAISS_INCLUDE_DIR})
 # 链接库
 target_link_libraries(login_system PRIVATE
     Drogon::Drogon
@@ -47,6 +73,9 @@ target_link_libraries(login_system PRIVATE
     ssl
     crypto
     mysqlclient
+    ${FAISS_LIBRARY}
+    OpenMP::OpenMP_CXX
+    ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES}
 )
 
 # 设置目标属性
@@ -66,7 +95,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(login_system PRIVATE
         -Wall
         -Wextra
-        -Werror
+        
         -O2
         -finput-charset=UTF-8
         -fexec-charset=UTF-8

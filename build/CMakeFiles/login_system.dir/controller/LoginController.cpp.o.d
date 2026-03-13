@@ -355,6 +355,7 @@ CMakeFiles/login_system.dir/controller/LoginController.cpp.o: \
  /usr/local/include/trantor/net/Resolver.h \
  /root/workfolder/basic/controller/../usersControl/UsersManage.h \
  /root/workfolder/basic/controller/../usersControl/User.h \
+ /root/workfolder/basic/controller/../usersControl/../sql/sql_wrapper.h \
  /root/workfolder/basic/controller/../usersControl/../sql/sqlconnpool.h \
  /usr/include/mysql/mysql.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
@@ -366,7 +367,7 @@ CMakeFiles/login_system.dir/controller/LoginController.cpp.o: \
  /usr/include/mysql/plugin_auth_common.h \
  /usr/include/mysql/mysql_version.h /usr/include/mysql/mysql_time.h \
  /usr/include/mysql/errmsg.h \
- /root/workfolder/basic/controller/../log_wrapper.h \
+ /root/workfolder/basic/controller/../usersControl/../sql/../log_wrapper.h \
  /root/workfolder/basic/external/Log/include/log.h \
  /root/workfolder/basic/external/Log/include/blockqueue.h \
  /root/workfolder/basic/external/Log/include/pattern.h \

@@ -60,6 +60,7 @@ int main() {
     // already registered in LoginController.h via PATH_LIST_BEGIN/END
     // app().registerController(std::make_shared<LoginController>());
     
+    
     // 添加默认路由
     app().registerHandler("/",
         [](const HttpRequestPtr&,

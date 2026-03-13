@@ -395,12 +395,13 @@ CMakeFiles/login_system.dir/main.cpp.o: /root/workfolder/basic/main.cpp \
  /usr/include/mysql/errmsg.h \
  /root/workfolder/basic/usersControl/UsersManage.h \
  /root/workfolder/basic/usersControl/User.h \
- /root/workfolder/basic/controller/LoginController.h \
- /root/workfolder/basic/log_wrapper.h \
+ /root/workfolder/basic/usersControl/../sql/sql_wrapper.h \
+ /root/workfolder/basic/usersControl/../sql/../log_wrapper.h \
  /root/workfolder/basic/external/Log/include/log.h \
  /root/workfolder/basic/external/Log/include/blockqueue.h \
  /root/workfolder/basic/external/Log/include/pattern.h \
  /root/workfolder/basic/external/Log/include/buffer.h \
  /root/workfolder/basic/external/Log/include/level.h \
  /root/workfolder/basic/external/Log/include/sender.h \
- /root/workfolder/basic/external/Log/include/stdoutSender.h
+ /root/workfolder/basic/external/Log/include/stdoutSender.h \
+ /root/workfolder/basic/controller/LoginController.h
