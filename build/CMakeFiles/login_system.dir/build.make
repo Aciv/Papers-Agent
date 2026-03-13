@@ -141,9 +141,8 @@ login_system: CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o
 login_system: CMakeFiles/login_system.dir/controller/LoginController.cpp.o
 login_system: CMakeFiles/login_system.dir/build.make
 login_system: /usr/local/lib/libdrogon.a
-login_system: /root/workfolder/basic/install/lib/libLog.a
+login_system: /root/workfolder/basic/external/Log/lib/libLog.a
 login_system: /usr/lib/x86_64-linux-gnu/libjsoncpp.so
-login_system: /root/workfolder/basic/install/lib/libLog.a
 login_system: /usr/local/lib/libtrantor.a
 login_system: /usr/lib/x86_64-linux-gnu/libssl.so
 login_system: /usr/lib/x86_64-linux-gnu/libcrypto.so

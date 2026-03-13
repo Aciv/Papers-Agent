@@ -397,10 +397,10 @@ CMakeFiles/login_system.dir/main.cpp.o: /root/workfolder/basic/main.cpp \
  /root/workfolder/basic/usersControl/User.h \
  /root/workfolder/basic/controller/LoginController.h \
  /root/workfolder/basic/log_wrapper.h \
- /root/workfolder/basic/install/include/log.h \
- /root/workfolder/basic/install/include/blockqueue.h \
- /root/workfolder/basic/install/include/pattern.h \
- /root/workfolder/basic/install/include/buffer.h \
- /root/workfolder/basic/install/include/level.h \
- /root/workfolder/basic/install/include/sender.h \
- /root/workfolder/basic/install/include/stdoutSender.h
+ /root/workfolder/basic/external/Log/include/log.h \
+ /root/workfolder/basic/external/Log/include/blockqueue.h \
+ /root/workfolder/basic/external/Log/include/pattern.h \
+ /root/workfolder/basic/external/Log/include/buffer.h \
+ /root/workfolder/basic/external/Log/include/level.h \
+ /root/workfolder/basic/external/Log/include/sender.h \
+ /root/workfolder/basic/external/Log/include/stdoutSender.h

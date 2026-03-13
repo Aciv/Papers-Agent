@@ -1,2 +1,1 @@
-cmake -DCMAKE
-_PREFIX_PATH=/root/workfolder/basic/install ..
+cmake -DCMAKE_PREFIX_PATH=/root/workfolder/basic/Log ..

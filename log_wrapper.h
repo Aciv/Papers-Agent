@@ -1,7 +1,7 @@
 #pragma once
 
-#include "install/include/log.h"
-#include "install/include/stdoutSender.h"
+#include "log.h"
+#include "stdoutSender.h"
 #include <memory>
 
 namespace LogWrapper {

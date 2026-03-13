@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -D_GLIBCXX_USE_CXX11_ABI=1
 
-CXX_INCLUDES = -I/root/workfolder/basic -isystem /root/workfolder/basic/install/include
+CXX_INCLUDES = -isystem /root/workfolder/basic/external/Log/include
 
 CXX_FLAGS = -std=c++20 -Wall -Wextra -Werror -O2 -finput-charset=UTF-8 -fexec-charset=UTF-8 -lmysqlclient
 

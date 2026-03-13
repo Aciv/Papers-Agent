@@ -367,10 +367,10 @@ CMakeFiles/login_system.dir/controller/LoginController.cpp.o: \
  /usr/include/mysql/mysql_version.h /usr/include/mysql/mysql_time.h \
  /usr/include/mysql/errmsg.h \
  /root/workfolder/basic/controller/../log_wrapper.h \
- /root/workfolder/basic/controller/../install/include/log.h \
- /root/workfolder/basic/controller/../install/include/blockqueue.h \
- /root/workfolder/basic/controller/../install/include/pattern.h \
- /root/workfolder/basic/controller/../install/include/buffer.h \
- /root/workfolder/basic/controller/../install/include/level.h \
- /root/workfolder/basic/controller/../install/include/sender.h \
- /root/workfolder/basic/controller/../install/include/stdoutSender.h
+ /root/workfolder/basic/external/Log/include/log.h \
+ /root/workfolder/basic/external/Log/include/blockqueue.h \
+ /root/workfolder/basic/external/Log/include/pattern.h \
+ /root/workfolder/basic/external/Log/include/buffer.h \
+ /root/workfolder/basic/external/Log/include/level.h \
+ /root/workfolder/basic/external/Log/include/sender.h \
+ /root/workfolder/basic/external/Log/include/stdoutSender.h

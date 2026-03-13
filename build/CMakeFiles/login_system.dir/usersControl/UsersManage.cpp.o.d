@@ -264,10 +264,10 @@ CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o: \
  /usr/include/c++/13/bits/regex_executor.h \
  /usr/include/c++/13/bits/regex_executor.tcc /usr/include/c++/13/iostream \
  /root/workfolder/basic/usersControl/../log_wrapper.h \
- /root/workfolder/basic/usersControl/../install/include/log.h \
- /root/workfolder/basic/usersControl/../install/include/blockqueue.h \
+ /root/workfolder/basic/external/Log/include/log.h \
+ /root/workfolder/basic/external/Log/include/blockqueue.h \
  /usr/include/c++/13/condition_variable /usr/include/c++/13/cassert \
- /root/workfolder/basic/usersControl/../install/include/pattern.h \
+ /root/workfolder/basic/external/Log/include/pattern.h \
  /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
@@ -277,10 +277,10 @@ CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o: \
  /usr/include/c++/13/charconv /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
- /root/workfolder/basic/usersControl/../install/include/buffer.h \
- /root/workfolder/basic/usersControl/../install/include/level.h \
- /root/workfolder/basic/usersControl/../install/include/sender.h \
- /root/workfolder/basic/usersControl/../install/include/stdoutSender.h \
+ /root/workfolder/basic/external/Log/include/buffer.h \
+ /root/workfolder/basic/external/Log/include/level.h \
+ /root/workfolder/basic/external/Log/include/sender.h \
+ /root/workfolder/basic/external/Log/include/stdoutSender.h \
  /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
  /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h

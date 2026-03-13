@@ -14,13 +14,7 @@ find_package(jsoncpp REQUIRED)
 
 find_package(SimpleLog REQUIRED)
 
-# 包含目录
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${MYSQL_INCLUDE_DIRS}
-    ${JSONCPP_INCLUDE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/install/include
-)
+
 
 # 源文件列表
 set(SOURCES
