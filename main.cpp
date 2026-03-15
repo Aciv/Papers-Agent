@@ -52,7 +52,10 @@ int main() {
     
     // 设置日志级别
     app().setLogLevel(trantor::Logger::kWarn);
-    
+
+    // 启用会话支持，设置会话过期时间为3分钟
+    app().enableSession(180);
+
     // 添加监听端口
     app().addListener("0.0.0.0", 8080);
     

@@ -17,17 +17,30 @@ QueryController::QueryController() {
 std::vector<int64_t> QueryController::queryMysql(std::string &categories, std::string &author, std::string &since_data) {
     std::vector<int64_t> vector_ids;
 
-    std::string query = "SELECT faiss_id FROM papers WHERE";
-    if(categories.size() > 0) {
-        query += " categories LIKE '%" + categories + "%'";
-    }
-    if(author.size() > 0) {
-        query += " AND author LIKE '%" + author + "%'";
-    }
-    if(since_data.size() > 0) {
-        query += " AND since_data >= '" + since_data + "'";
+    if(categories.empty() && author.empty() && since_data.empty()) {
+        // 如果没有任何过滤条件，直接返回空ID列表，表示查询所有向量
+        return vector_ids;
     }
 
+    std::string query = "SELECT faiss_id FROM papers WHERE";
+    bool isc = false;
+    if(categories.size() > 0) {
+        query += " categories LIKE '%" + categories + "%'";
+
+    }
+    if(author.size() > 0) {
+        if(categories.size() > 0)
+            query += " AND";
+        query += " author LIKE '%" + author + "%'";
+    }
+
+    if(since_data.size() > 0) {
+        if(categories.size() > 0 || author.size() > 0)
+            query += " AND";
+        query += " published_date >= '" + since_data + "'";
+    }
+
+    
     
     MYSQL_RES* result = sqlWrapper.executeQueryWithResult(query);
 
@@ -43,10 +56,40 @@ std::vector<int64_t> QueryController::queryMysql(std::string &categories, std::s
         }
     }
 
+    mysql_free_result(result);
     return vector_ids;
 }
 
+bool QueryController::faiss_id_query(int64_t faiss_id, Json::Value &item) {
 
+    
+    std::string query = "SELECT p.*, a.abstract  FROM papers p INNER JOIN paper_abstract a on"
+                        " a.arxiv_id = p.arxiv_id where faiss_id=" + std::to_string(faiss_id);
+    MYSQL_RES* result = sqlWrapper.executeQueryWithResult(query);
+
+    if (!result) {
+        APP_LOG_ERROR("获取查询结果失败");
+        return false;
+    }
+
+    MYSQL_ROW row = mysql_fetch_row(result);
+    if (row) {
+
+        item["arxiv id"] = row[1] ? row[1] : "";
+        item["title"] = row[2] ? row[2] : "";
+        item["author"] = row[3] ? row[3] : "";
+        item["published_data"] = row[4] ? row[4] : "";
+        item["categories"] = row[5] ? row[5] : "";
+        item["web_url"] = row[6] ? row[6] : "";
+        item["pdf_url"] = row[7] ? row[7] : "";
+        item["abstract"] = row[8] ? row[8] : "";
+    }
+
+    bool exist = (mysql_num_rows(result) > 0);
+    mysql_free_result(result);
+
+    return exist;
+}
 
 
 void QueryController::queryVector(const drogon::HttpRequestPtr& req,
@@ -111,21 +154,23 @@ void QueryController::queryVector(const drogon::HttpRequestPtr& req,
             return;
         }
 
+        
+
         // 构建响应
         Json::Value response;
+        
+
         response["code"] = 200;
         response["message"] = "查询成功";
-        response["data"]["dimension"] = result.dimension;
-        response["data"]["k"] = result.k;
+        response["paper counts"] = result.k;
         
         Json::Value resultsJson(Json::arrayValue);
         for (size_t i = 0; i < result.ids.size(); ++i) {
             Json::Value item;
-            item["id"] = static_cast<Json::Int64>(result.ids[i]);
-            item["distance"] = result.distances[i];
+            faiss_id_query(result.ids[i], item);
             resultsJson.append(item);
         }
-        response["data"]["results"] = resultsJson;
+        response["results"] = resultsJson;
 
         callback(createJsonResponse(response));
 
@@ -214,7 +259,6 @@ void QueryController::batchQueryVector(const drogon::HttpRequestPtr& req,
         Json::Value response;
         response["code"] = 200;
         response["message"] = "批量查询成功";
-        response["data"]["dimension"] = result.dimension;
         response["data"]["k"] = result.k;
         response["data"]["num_queries"] = numQueries;
 
@@ -224,8 +268,7 @@ void QueryController::batchQueryVector(const drogon::HttpRequestPtr& req,
             for (int i = 0; i < result.k; ++i) {
                 size_t idx = static_cast<size_t>(q * result.k + i);
                 Json::Value item;
-                item["id"] = static_cast<Json::Int64>(result.ids[idx]);
-                item["distance"] = result.distances[idx];
+                faiss_id_query(result.ids[idx], item);
                 queryResults.append(item);
             }
             allResults.append(queryResults);

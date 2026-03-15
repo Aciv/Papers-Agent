@@ -1,4 +1,7 @@
 
 build/
-
+build/*
 makezl.md
+.vscode/
+.vscode/*
+*.cmake

@@ -91,6 +91,11 @@ void LoginController::loginUser(const drogon::HttpRequestPtr& req,
         Json::Value response;
         if (success) {
             // 获取用户信息
+            auto session = req->session();
+
+            session->insert("user_email", user_email);
+            session->insert("is_logged_in", true);
+
             auto user = userDataController.getUserByEmail(user_email);
             
             response["code"] = 200;
@@ -117,9 +122,23 @@ void LoginController::loginUser(const drogon::HttpRequestPtr& req,
 
 void LoginController::getUser(const drogon::HttpRequestPtr& req,
                                   std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
+    if (!req->session()->find("is_logged_in") || 
+        !req->session()->get<bool>("is_logged_in")) {
+        auto resp = createErrorResponse("未登录");
+        callback(resp);
+        return;
+    }
+
     try {
         // 从查询参数获取用户名
-        std::string user_email = req->getParameter("user_email");
+        if (!req->session()->find("user_email")) {
+            auto resp = createErrorResponse("未找到用户邮箱");
+            callback(resp);
+            return;
+        }
+        
+        std::string user_email = req->session()->get<std::string>("user_email");
+        //std::string user_email = req->getParameter("user_email");
         
         if (user_email.empty()) {
             auto resp = createErrorResponse("邮箱参数不能为空");

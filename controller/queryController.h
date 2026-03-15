@@ -47,6 +47,8 @@ public:
 private:
 
     std::vector<int64_t> queryMysql(std::string &categories, std::string &author, std::string &since_data);
+    bool faiss_id_query(int64_t faiss_id, Json::Value &item);
+    
     // 创建JSON响应
     drogon::HttpResponsePtr createJsonResponse(const Json::Value& json, 
                                                 drogon::HttpStatusCode code = drogon::k200OK);
