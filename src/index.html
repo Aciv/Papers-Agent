@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文管理系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 论文管理系统</h1>
+            <nav id="nav-menu">
+                <a href="index.html" class="active">首页</a>
+                <a href="login.html" id="login-link">登录</a>
+                <a href="register.html" id="register-link">注册</a>
+                <a href="papers.html" id="papers-link" style="display:none;">我的论文</a>
+                <a href="chat.html" id="chat-link" style="display:none;">智能聊天</a>
+                <a href="#" id="logout-link" style="display:none;" onclick="logout()">退出登录</a>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="welcome-section">
+                <h2>欢迎使用论文管理系统</h2>
+                <p>这是一个基于 Drogon 框架的论文收藏管理平台。</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>🔐 用户认证</h3>
+                        <p>安全的用户注册和登录系统</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📖 论文收藏</h3>
+                        <p>收藏和管理您感兴趣的arXiv论文</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔍 便捷查询</h3>
+                        <p>快速查看您收藏的所有论文</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🤖 智能聊天</h3>
+                        <p>基于AI的论文问答和查询助手</p>
+                    </div>
+                </div>
+                
+                <div id="user-status" class="user-status"></div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 论文管理系统 - Papers Agent</p>
+        </footer>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+        });
+    </script>
+</body>
+</html>

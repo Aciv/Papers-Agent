@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/login_system.dir/controller/LoginController.cpp.o"
   "CMakeFiles/login_system.dir/controller/LoginController.cpp.o.d"
+  "CMakeFiles/login_system.dir/controller/chatController.cpp.o"
+  "CMakeFiles/login_system.dir/controller/chatController.cpp.o.d"
+  "CMakeFiles/login_system.dir/controller/papersController.cpp.o"
+  "CMakeFiles/login_system.dir/controller/papersController.cpp.o.d"
   "CMakeFiles/login_system.dir/controller/queryController.cpp.o"
   "CMakeFiles/login_system.dir/controller/queryController.cpp.o.d"
   "CMakeFiles/login_system.dir/main.cpp.o"

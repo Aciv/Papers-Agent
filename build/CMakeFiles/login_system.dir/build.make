@@ -139,10 +139,38 @@ CMakeFiles/login_system.dir/controller/queryController.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/login_system.dir/controller/queryController.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/workfolder/basic/controller/queryController.cpp -o CMakeFiles/login_system.dir/controller/queryController.cpp.s
 
+CMakeFiles/login_system.dir/controller/papersController.cpp.o: CMakeFiles/login_system.dir/flags.make
+CMakeFiles/login_system.dir/controller/papersController.cpp.o: /root/workfolder/basic/controller/papersController.cpp
+CMakeFiles/login_system.dir/controller/papersController.cpp.o: CMakeFiles/login_system.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/workfolder/basic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/login_system.dir/controller/papersController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/login_system.dir/controller/papersController.cpp.o -MF CMakeFiles/login_system.dir/controller/papersController.cpp.o.d -o CMakeFiles/login_system.dir/controller/papersController.cpp.o -c /root/workfolder/basic/controller/papersController.cpp
+
+CMakeFiles/login_system.dir/controller/papersController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/login_system.dir/controller/papersController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/workfolder/basic/controller/papersController.cpp > CMakeFiles/login_system.dir/controller/papersController.cpp.i
+
+CMakeFiles/login_system.dir/controller/papersController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/login_system.dir/controller/papersController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/workfolder/basic/controller/papersController.cpp -o CMakeFiles/login_system.dir/controller/papersController.cpp.s
+
+CMakeFiles/login_system.dir/controller/chatController.cpp.o: CMakeFiles/login_system.dir/flags.make
+CMakeFiles/login_system.dir/controller/chatController.cpp.o: /root/workfolder/basic/controller/chatController.cpp
+CMakeFiles/login_system.dir/controller/chatController.cpp.o: CMakeFiles/login_system.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/workfolder/basic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/login_system.dir/controller/chatController.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/login_system.dir/controller/chatController.cpp.o -MF CMakeFiles/login_system.dir/controller/chatController.cpp.o.d -o CMakeFiles/login_system.dir/controller/chatController.cpp.o -c /root/workfolder/basic/controller/chatController.cpp
+
+CMakeFiles/login_system.dir/controller/chatController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/login_system.dir/controller/chatController.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/workfolder/basic/controller/chatController.cpp > CMakeFiles/login_system.dir/controller/chatController.cpp.i
+
+CMakeFiles/login_system.dir/controller/chatController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/login_system.dir/controller/chatController.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/workfolder/basic/controller/chatController.cpp -o CMakeFiles/login_system.dir/controller/chatController.cpp.s
+
 CMakeFiles/login_system.dir/query/FaissQuery.cpp.o: CMakeFiles/login_system.dir/flags.make
 CMakeFiles/login_system.dir/query/FaissQuery.cpp.o: /root/workfolder/basic/query/FaissQuery.cpp
 CMakeFiles/login_system.dir/query/FaissQuery.cpp.o: CMakeFiles/login_system.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/workfolder/basic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/login_system.dir/query/FaissQuery.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/root/workfolder/basic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/login_system.dir/query/FaissQuery.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/login_system.dir/query/FaissQuery.cpp.o -MF CMakeFiles/login_system.dir/query/FaissQuery.cpp.o.d -o CMakeFiles/login_system.dir/query/FaissQuery.cpp.o -c /root/workfolder/basic/query/FaissQuery.cpp
 
 CMakeFiles/login_system.dir/query/FaissQuery.cpp.i: cmake_force
@@ -160,6 +188,8 @@ login_system_OBJECTS = \
 "CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o" \
 "CMakeFiles/login_system.dir/controller/LoginController.cpp.o" \
 "CMakeFiles/login_system.dir/controller/queryController.cpp.o" \
+"CMakeFiles/login_system.dir/controller/papersController.cpp.o" \
+"CMakeFiles/login_system.dir/controller/chatController.cpp.o" \
 "CMakeFiles/login_system.dir/query/FaissQuery.cpp.o"
 
 # External object files for target login_system
@@ -170,6 +200,8 @@ login_system: CMakeFiles/login_system.dir/sql/sqlconnpool.cpp.o
 login_system: CMakeFiles/login_system.dir/usersControl/UsersManage.cpp.o
 login_system: CMakeFiles/login_system.dir/controller/LoginController.cpp.o
 login_system: CMakeFiles/login_system.dir/controller/queryController.cpp.o
+login_system: CMakeFiles/login_system.dir/controller/papersController.cpp.o
+login_system: CMakeFiles/login_system.dir/controller/chatController.cpp.o
 login_system: CMakeFiles/login_system.dir/query/FaissQuery.cpp.o
 login_system: CMakeFiles/login_system.dir/build.make
 login_system: /usr/local/lib/libdrogon.a
@@ -187,7 +219,7 @@ login_system: /usr/lib/x86_64-linux-gnu/libz.so
 login_system: /usr/lib/gcc/x86_64-linux-gnu/13/libgomp.so
 login_system: /usr/lib/x86_64-linux-gnu/libpthread.a
 login_system: CMakeFiles/login_system.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/root/workfolder/basic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable login_system"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/root/workfolder/basic/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable login_system"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/login_system.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

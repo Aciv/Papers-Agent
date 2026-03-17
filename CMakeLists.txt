@@ -43,6 +43,8 @@ set(SOURCES
     usersControl/UsersManage.cpp
     controller/LoginController.cpp
     controller/queryController.cpp
+    controller/papersController.cpp
+    controller/chatController.cpp
     query/FaissQuery.cpp
 )
 
@@ -54,6 +56,8 @@ set(HEADERS
     usersControl/User.h
     controller/LoginController.h
     controller/queryController.h
+    controller/papersController.h
+    controller/chatController.h
     query/FaissQuery.h
 )
 

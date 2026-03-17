@@ -36,6 +36,7 @@ public:
     void getUser(const drogon::HttpRequestPtr& req,
                       std::function<void(const drogon::HttpResponsePtr&)>&& callback);
 
+    
 private:
     WEB_ESSAY_LIBRARY::UserDataController userDataController;
     // 创建JSON响应

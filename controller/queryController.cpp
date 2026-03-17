@@ -14,13 +14,15 @@ QueryController::QueryController() {
     }
 }
 
-std::vector<int64_t> QueryController::queryMysql(std::string &categories, std::string &author, std::string &since_data) {
+std::vector<int64_t> QueryController::queryMysql(std::string &categories, std::string &author, std::string &since_date) {
     std::vector<int64_t> vector_ids;
 
-    if(categories.empty() && author.empty() && since_data.empty()) {
-        // 如果没有任何过滤条件，直接返回空ID列表，表示查询所有向量
+    if(categories.empty() && author.empty() && since_date.empty()) {
         return vector_ids;
     }
+
+    APP_LOG_DEBUG_FMT("categories : %s, author : %s, data : %s",
+                        categories.data(), author.data(), since_date.data());
 
     std::string query = "SELECT faiss_id FROM papers WHERE";
     bool isc = false;
@@ -34,10 +36,10 @@ std::vector<int64_t> QueryController::queryMysql(std::string &categories, std::s
         query += " author LIKE '%" + author + "%'";
     }
 
-    if(since_data.size() > 0) {
+    if(since_date.size() > 0) {
         if(categories.size() > 0 || author.size() > 0)
             query += " AND";
-        query += " published_date >= '" + since_data + "'";
+        query += " published_date >= '" + since_date + "'";
     }
 
     
@@ -123,9 +125,9 @@ void QueryController::queryVector(const drogon::HttpRequestPtr& req,
 
         std::string categories = jsonBody->get("categories", "").asString();
         std::string author = jsonBody->get("author", "").asString();
-        std::string since_data = jsonBody->get("since_data", "").asString();
+        std::string since_date = jsonBody->get("since_date", "").asString();
 
-        std::vector<int64_t> vector_ids = queryMysql(categories, author, since_data);
+        std::vector<int64_t> vector_ids = queryMysql(categories, author, since_date);
 
         // 获取k值（默认5）
         int k = jsonBody->get("k", 5).asInt();
@@ -237,8 +239,8 @@ void QueryController::batchQueryVector(const drogon::HttpRequestPtr& req,
 
         std::string categories = jsonBody->get("categories", "").asString();
         std::string author = jsonBody->get("author", "").asString();
-        std::string since_data = jsonBody->get("since_data", "").asString();
-        std::vector<int64_t> vector_ids = queryMysql(categories, author, since_data);
+        std::string since_date = jsonBody->get("since_date", "").asString();
+        std::vector<int64_t> vector_ids = queryMysql(categories, author, since_date);
 
         // 获取k值和nprobe
         int k = jsonBody->get("k", 5).asInt();

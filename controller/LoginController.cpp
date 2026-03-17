@@ -72,11 +72,11 @@ void LoginController::loginUser(const drogon::HttpRequestPtr& req,
             return;
         }
         
-
         // 获取请求参数
         std::string user_email = jsonBody->get("user_email", "").asString();
         std::string password = jsonBody->get("password", "").asString();
         
+        APP_LOG_DEBUG_FMT("%s , %s", user_email.data(), password.data());
 
         // 验证参数
         if (user_email.empty() || password.empty()) {
@@ -92,12 +92,19 @@ void LoginController::loginUser(const drogon::HttpRequestPtr& req,
         if (success) {
             // 获取用户信息
             auto session = req->session();
-
-            session->insert("user_email", user_email);
-            session->insert("is_logged_in", true);
+            
+            if (session->find("user_email")) {
+                auto resp = createErrorResponse("用户已登录");
+                callback(resp);
+                return;
+            }
 
             auto user = userDataController.getUserByEmail(user_email);
             
+            session->insert("user_email", user_email);
+            session->insert("is_logged_in", true);
+            session->insert("user_id", user->getId());
+
             response["code"] = 200;
             response["message"] = "登录成功";
             response["data"]["id"] = user->getId();
@@ -122,14 +129,15 @@ void LoginController::loginUser(const drogon::HttpRequestPtr& req,
 
 void LoginController::getUser(const drogon::HttpRequestPtr& req,
                                   std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
-    if (!req->session()->find("is_logged_in") || 
-        !req->session()->get<bool>("is_logged_in")) {
-        auto resp = createErrorResponse("未登录");
-        callback(resp);
-        return;
-    }
+
 
     try {
+        if (!req->session()->find("is_logged_in") || 
+            !req->session()->get<bool>("is_logged_in")) {
+            auto resp = createErrorResponse("未登录");
+            callback(resp);
+            return;
+        }
         // 从查询参数获取用户名
         if (!req->session()->find("user_email")) {
             auto resp = createErrorResponse("未找到用户邮箱");

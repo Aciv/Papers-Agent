@@ -5,3 +5,4 @@ makezl.md
 .vscode/
 .vscode/*
 *.cmake
+*.json

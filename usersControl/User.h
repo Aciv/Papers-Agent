@@ -8,13 +8,13 @@ class User {
 public:
     User() = default;
     
-    User(int id, const std::string& username, const std::string& password, 
+    User(int64_t id, const std::string& username, const std::string& password, 
          const std::string& email, const std::string& createdAt)
         : id(id), username(username), password(password), 
           email(email), createdAt(createdAt) {}
     
     // Getters
-    int getId() const { return id; }
+    int64_t getId() const { return id; }
     const std::string& getUsername() const { return username; }
     const std::string& getPassword() const { return password; }
     const std::string& getEmail() const { return email; }
@@ -22,7 +22,7 @@ public:
     const std::string& getLastActive() const { return lastActive; }
     bool isChanged() const { return ischanged; }
 
-    void userInit(int id, const std::string& username, const std::string& password, 
+    void userInit(int64_t id, const std::string& username, const std::string& password, 
          const std::string& email, const std::string& createdAt, const std::string& lastActive) {
         this->id = id;
         this->username = username;
@@ -40,7 +40,7 @@ public:
     void setLastActive(const std::string& lastActive) { ischanged = true; this->lastActive = lastActive; }
     
 private:
-    int id = 0;
+    int64_t id = 0;
     std::string username;
     std::string password;
     std::string email;

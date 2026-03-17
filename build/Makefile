@@ -153,6 +153,54 @@ controller/LoginController.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/LoginController.cpp.s
 .PHONY : controller/LoginController.cpp.s
 
+controller/chatController.o: controller/chatController.cpp.o
+.PHONY : controller/chatController.o
+
+# target to build an object file
+controller/chatController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/chatController.cpp.o
+.PHONY : controller/chatController.cpp.o
+
+controller/chatController.i: controller/chatController.cpp.i
+.PHONY : controller/chatController.i
+
+# target to preprocess a source file
+controller/chatController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/chatController.cpp.i
+.PHONY : controller/chatController.cpp.i
+
+controller/chatController.s: controller/chatController.cpp.s
+.PHONY : controller/chatController.s
+
+# target to generate assembly for a file
+controller/chatController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/chatController.cpp.s
+.PHONY : controller/chatController.cpp.s
+
+controller/papersController.o: controller/papersController.cpp.o
+.PHONY : controller/papersController.o
+
+# target to build an object file
+controller/papersController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/papersController.cpp.o
+.PHONY : controller/papersController.cpp.o
+
+controller/papersController.i: controller/papersController.cpp.i
+.PHONY : controller/papersController.i
+
+# target to preprocess a source file
+controller/papersController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/papersController.cpp.i
+.PHONY : controller/papersController.cpp.i
+
+controller/papersController.s: controller/papersController.cpp.s
+.PHONY : controller/papersController.s
+
+# target to generate assembly for a file
+controller/papersController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/login_system.dir/build.make CMakeFiles/login_system.dir/controller/papersController.cpp.s
+.PHONY : controller/papersController.cpp.s
+
 controller/queryController.o: controller/queryController.cpp.o
 .PHONY : controller/queryController.o
 
@@ -285,6 +333,12 @@ help:
 	@echo "... controller/LoginController.o"
 	@echo "... controller/LoginController.i"
 	@echo "... controller/LoginController.s"
+	@echo "... controller/chatController.o"
+	@echo "... controller/chatController.i"
+	@echo "... controller/chatController.s"
+	@echo "... controller/papersController.o"
+	@echo "... controller/papersController.i"
+	@echo "... controller/papersController.s"
 	@echo "... controller/queryController.o"
 	@echo "... controller/queryController.i"
 	@echo "... controller/queryController.s"

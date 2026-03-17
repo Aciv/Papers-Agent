@@ -1,10 +1,12 @@
 #include <drogon/drogon.h>
+#include <drogon/HttpAppFramework.h>
 #include "sql/sqlconnpool.h"
 #include "usersControl/UsersManage.h"
 #include "controller/LoginController.h"
 #include "log_wrapper.h"
 
 using namespace drogon;
+const std::string BASE_SRC_PATH = "./src/";
 
 int main() {
     // 初始化日志系统
@@ -34,69 +36,59 @@ int main() {
         connPool->Init(host, port, user, password, dbName, connSize);
         APP_LOG_INFO("MySQL连接池初始化成功");
         
-        // 创建用户表
-        WEB_ESSAY_LIBRARY::UserDataController manage;
-        /* 
-        if (userDAO.createTable()) {
-            APP_LOG_INFO("用户表创建成功");
-        } else {
-            APP_LOG_ERROR("用户表创建失败");
-        }
-        */
+
         
     } catch (const std::exception& e) {
         APP_LOG_ERROR_FMT("MySQL连接池初始化失败: %s", e.what());
         APP_LOG_WARN("请确保MySQL服务正在运行，并且数据库'web_essay_library'存在");
         return 1;
     }
-    
-    // 设置日志级别
+
+
     app().setLogLevel(trantor::Logger::kWarn);
 
-    // 启用会话支持，设置会话过期时间为3分钟
+
     app().enableSession(180);
 
-    // 添加监听端口
+
     app().addListener("0.0.0.0", 8080);
     
-    // 注册控制器
-    // already registered in LoginController.h via PATH_LIST_BEGIN/END
-    // app().registerController(std::make_shared<LoginController>());
-    
-    
+
+     drogon::app().registerPreRoutingAdvice(
+        [](const drogon::HttpRequestPtr &req,
+           drogon::AdviceCallback &&stop,
+           drogon::AdviceChainCallback &&pass) {
+            
+            if (req->method() == drogon::Options) {
+
+                auto resp = drogon::HttpResponse::newHttpResponse();
+
+
+                resp->addHeader("Access-Control-Allow-Origin", "http://152.136.99.95:8080");
+                resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                resp->addHeader("Access-Control-Allow-Headers", "Content-Type");
+                
+                resp->addHeader("Access-Control-Allow-Credentials", "true");
+
+                stop(resp);
+                return;
+            }
+
+            pass();
+        });
+
+
     // 添加默认路由
+    app().setDocumentRoot(BASE_SRC_PATH);
+
     app().registerHandler("/",
         [](const HttpRequestPtr&,
            std::function<void(const HttpResponsePtr&)>&& callback) {
-            auto resp = HttpResponse::newHttpResponse();
-            resp->setBody("<h1>登录系统API服务器</h1>"
-                          "<p>Drogon + MySQL 登录系统运行正常！</p>"
-                          "<h2>可用API端点:</h2>"
-                          "<ul>"
-                          "<li><strong>POST /api/register</strong> - 用户注册</li>"
-                          "<li><strong>POST /api/login</strong> - 用户登录</li>"
-                          "<li><strong>GET /api/user?username=xxx</strong> - 获取用户信息</li>"
-                          "</ul>"
-                          "<h3>注册请求示例:</h3>"
-                          "<pre>"
-                          "POST /api/register\n"
-                          "Content-Type: application/json\n"
-                          "{\n"
-                          "  \"username\": \"testuser\",\n"
-                          "  \"password\": \"testpass\",\n"
-                          "  \"email\": \"test@example.com\"\n"
-                          "}"
-                          "</pre>"
-                          "<h3>登录请求示例:</h3>"
-                          "<pre>"
-                          "POST /api/login\n"
-                          "Content-Type: application/json\n"
-                          "{\n"
-                          "  \"username\": \"testuser\",\n"
-                          "  \"password\": \"testpass\"\n"
-                          "}"
-                          "</pre>");
+            std::string path = BASE_SRC_PATH + "index.html";
+            auto resp = HttpResponse::newFileResponse(path);
+
             resp->setContentTypeCode(CT_TEXT_HTML);
+            
             callback(resp);
         });
     
@@ -123,10 +115,10 @@ int main() {
     APP_LOG_INFO("  GET  /api/user     - 获取用户信息");
     APP_LOG_INFO("按 Ctrl+C 停止服务器");
     
-    // 运行应用
+
     app().run();
     
-    // 清理连接池
+
     connPool->ClosePool();
     APP_LOG_INFO("服务器已停止，连接池已清理");
     
