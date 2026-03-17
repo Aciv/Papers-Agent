@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 论文管理系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 论文管理系统</h1>
+            <nav id="nav-menu">
+                <a href="index.html">首页</a>
+                <a href="login.html" class="active">登录</a>
+                <a href="register.html">注册</a>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="form-section">
+                <h2>用户登录</h2>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="user_email">邮箱</label>
+                        <input type="email" id="user_email" name="user_email" 
+                               placeholder="请输入邮箱" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" name="password" 
+                               placeholder="请输入密码" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </div>
+                    
+                    <div id="login-message" class="message"></div>
+                    
+                    <p class="form-footer">
+                        还没有账号？<a href="register.html">立即注册</a>
+                    </p>
+                </form>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 论文管理系统 - Papers Agent</p>
+        </footer>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const user_email = document.getElementById('user_email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('login-message');
+            
+            try {
+                messageDiv.className = 'message';
+                messageDiv.textContent = '登录中...';
+                
+                const result = await API.login(user_email, password);
+                
+                if (result.code === 200) {
+                    messageDiv.className = 'message success';
+                    messageDiv.textContent = '登录成功！正在跳转...';
+                    
+                    // 保存用户信息到本地存储
+                    localStorage.setItem('user', JSON.stringify(result.data));
+                    localStorage.setItem('isLoggedIn', 'true');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'papers.html';
+                    }, 1000);
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = result.message || '登录失败';
+                }
+            } catch (error) {
+                messageDiv.className = 'message error';
+                // 如果 error 对象有 data 且包含 message 字段，则显示具体错误信息
+                if (error.data && error.data.message) {
+                    messageDiv.textContent = error.data.message;
+                } else {
+                    messageDiv.textContent = error.message || '网络错误，请稍后重试';
+                }
+                console.error('Login error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
