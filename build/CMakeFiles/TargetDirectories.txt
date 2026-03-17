@@ -1,3 +1,0 @@
-/root/workfolder/basic/build/CMakeFiles/login_system.dir
-/root/workfolder/basic/build/CMakeFiles/edit_cache.dir
-/root/workfolder/basic/build/CMakeFiles/rebuild_cache.dir
